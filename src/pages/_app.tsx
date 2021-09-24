@@ -1,9 +1,11 @@
 import type { AppProps } from "next/app";
 import { getLoggedUserId } from "../utils/getLoggedUserId";
-import "../styles/globals.css";
 import "../translations/i18n";
 import React, { Fragment } from "react";
 import Head from "next/head";
+import TopBar from "../components/navbar/Navbar";
+import Layout from "../components/layout/Layout";
+import { GlobalStyle } from "../styles/bootstrap/theme";
 
 // Default way to get a logged user
 export const loggedUserId = getLoggedUserId();
@@ -18,7 +20,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="Frontend exercise for developpers who want to join us on leboncoin.fr"
         />
       </Head>
-      <Component {...pageProps} />;
+      <GlobalStyle />
+      <TopBar />
+      <Layout>
+        <Component {...pageProps} />;
+      </Layout>
     </Fragment>
   );
 }

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ErrorWrapper, Subtitle, Title } from "../../styles/error.styles";
+import { ErrorWrapper, Subtitle, Title } from "./error.styles";
 import { useTranslation } from "react-i18next";
 
 const Error: FC = () => {

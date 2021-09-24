@@ -3,9 +3,12 @@ import Head from "next/head";
 import { getUsers } from "../utils/users";
 import { User } from "../types/user";
 import axios from "axios";
+import { Conversation } from "../types/conversation";
+import { getLoggedUserConversations } from "../utils/conversations";
 
 interface OwnProps {
   users: User[];
+  conversations: Conversation[];
 }
 
 const Home: FC<OwnProps> = ({ users }) => {
@@ -14,10 +17,12 @@ const Home: FC<OwnProps> = ({ users }) => {
 
 export async function getServerSideProps() {
   try {
-    const { data } = await getUsers();
+    const { data: users } = await getUsers();
+    const { data: conversations } = await getLoggedUserConversations();
     return {
       props: {
-        users: data,
+        users,
+        conversations,
       },
     };
   } catch (e) {
@@ -29,6 +34,7 @@ export async function getServerSideProps() {
   return {
     props: {
       users: [],
+      conversations: [],
     },
   };
 }
