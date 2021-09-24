@@ -1,21 +1,20 @@
-import { FC, Fragment } from "react";
-import Head from "next/head";
-import { getUsers } from "../utils/users";
-import { User } from "../types/user";
-import axios from "axios";
-import { Conversation } from "../types/conversation";
-import { getLoggedUserConversations } from "../utils/conversations";
-import Navigation from "../components/navigation/Navigation";
+import React, { FC, Fragment } from "react";
+import Navigation from "../../components/navigation/Navigation";
+import { Conversation } from "../../types/conversation";
+import { User } from "../../types/user";
+import { getLoggedUserConversations } from "../../utils/conversations";
+import { getUsers } from "../../utils/users";
 
 interface OwnProps {
   users: User[];
   conversations: Conversation[];
 }
 
-const Home: FC<OwnProps> = ({ users, conversations }) => {
+const ConversationWith: FC<OwnProps> = ({ users, conversations }) => {
   return (
     <Fragment>
       <Navigation users={users} conversations={conversations} />
+      <div>Messages</div>
     </Fragment>
   );
 };
@@ -35,4 +34,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default Home;
+export default ConversationWith;

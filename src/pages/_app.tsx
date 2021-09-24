@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <TopBar />
       <Layout>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </Layout>
     </Fragment>
   );
