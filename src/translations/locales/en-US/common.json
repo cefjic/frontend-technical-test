@@ -1,8 +1,12 @@
 {
   "errors": {
-    "server": {
+    "500": {
       "title": ":(",
       "subtitle": "There is a technical problem. Please retry in some minutes."
+    },
+    "404": {
+      "title": "Page not found",
+      "subtitle": "There is nothing here."
     }
   }
 }
