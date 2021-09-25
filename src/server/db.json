@@ -137,6 +137,13 @@
       "body": "test",
       "timestamp": 1632566232995,
       "id": 8
+    },
+    {
+      "id": 9,
+      "conversationId": 1,
+      "timestamp": 1632566233999,
+      "authorId": 2,
+      "body": "Bonjour c'est le 4eme message de la première conversation"
     }
   ],
   "users": [

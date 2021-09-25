@@ -29,7 +29,9 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
     data: messages,
     error,
     mutate,
-  } = useSWR<Message[]>(`${process.env.API_URL}/messages/${id}`, fetcher);
+  } = useSWR<Message[]>(`${process.env.API_URL}/messages/${id}`, fetcher, {
+    refreshInterval: REFRESH_INTERVAL,
+  });
 
   const scrollToDown = () => {
     if (bubbleWrapperRef.current) {
@@ -38,18 +40,11 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
     }
   };
 
-  const updateMessages = useCallback(
-    (withScroll = true) => {
-      mutate()
-        .then(() => {
-          if (withScroll) {
-            scrollToDown();
-          }
-        })
-        .catch(() => toast.error(t("errors.messages.update")));
-    },
-    [mutate, t]
-  );
+  const updateMessages = useCallback(() => {
+    mutate()
+      .then(scrollToDown)
+      .catch(() => toast.error(t("errors.messages.update")));
+  }, [mutate, t]);
 
   // Scroll to end of BubbleWrapper to show last messages first
   useEffect(() => {
@@ -61,14 +56,6 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
 
     return () => window.clearTimeout(timeout);
   }, [bubbleWrapperRef]);
-
-  useEffect(() => {
-    const interval = window.setInterval(
-      () => updateMessages(false),
-      REFRESH_INTERVAL
-    );
-    return window.clearInterval(interval);
-  }, [updateMessages]);
 
   if (!messages && !error) {
     // TODO : improve loading UI with loader
