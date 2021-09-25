@@ -32,9 +32,7 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
   } = useSWR<Message[]>(`${process.env.API_URL}/messages/${id}`, fetcher);
 
   const scrollToDown = () => {
-    console.log("test", bubbleWrapperRef.current);
     if (bubbleWrapperRef.current) {
-      console.log(bubbleWrapperRef.current);
       bubbleWrapperRef.current.scrollTop =
         bubbleWrapperRef.current.scrollHeight;
     }
