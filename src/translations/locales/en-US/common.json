@@ -2,6 +2,10 @@
   "you": "You",
   "loading": "Loading...",
   "errors": {
+    "messages": {
+      "send": "We can't send your message for now. Please retry in some minutes.",
+      "update": "We can't update your conversation for now. Please retry in some minutes."
+    },
     "500": {
       "title": ":(",
       "subtitle": "There is a technical problem. Please retry in some minutes."

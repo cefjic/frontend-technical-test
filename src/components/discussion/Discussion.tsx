@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useSWR from "swr";
 import { Conversation } from "../../types/conversation";
@@ -8,6 +8,8 @@ import { fetcher } from "../../utils/http";
 import { getPreviousMessage } from "../../utils/messages";
 import Bubble from "./bubble/Bubble";
 import { Wrapper } from "./Discussion.styles";
+import Form from "./form/Form";
+import { toast } from "react-toastify";
 
 interface OwnProps {
   users: User[];
@@ -28,10 +30,17 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
     mutate,
   } = useSWR<Message[]>(`${process.env.API_URL}/messages/${id}`, fetcher);
 
+  const updateMessages = useCallback(() => {
+    mutate().catch(() => toast.error(t("errors.messages.update")));
+  }, [mutate, t]);
+
   useEffect(() => {
-    const interval = window.setInterval(() => mutate(), REFRESH_INTERVAL);
+    const interval = window.setInterval(
+      () => updateMessages(),
+      REFRESH_INTERVAL
+    );
     return window.clearInterval(interval);
-  }, [mutate]);
+  }, [updateMessages]);
 
   if (!messages && !error) {
     // TODO : improve loading UI with loader
@@ -56,6 +65,7 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
           />
         );
       })}
+      <Form conversation={conversation} onSubmit={updateMessages} />
     </Wrapper>
   );
 };

@@ -11,6 +11,7 @@ export const Wrapper = styled.nav<{ isVisible: boolean }>`
   flex: 1;
 
   ${media.minWidth("laptop")`
+    display: block;
     flex: unset;
     min-width: 25%;
   `}

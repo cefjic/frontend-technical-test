@@ -6,6 +6,8 @@ import Head from "next/head";
 import TopBar from "../components/navbar/Navbar";
 import Layout from "../components/layout/Layout";
 import { GlobalStyle } from "../styles/bootstrap/theme";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Default way to get a logged user
 export const loggedUserId = getLoggedUserId();
@@ -21,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyle />
+      <ToastContainer position="bottom-left" />
       <TopBar />
       <Layout>
         <Component {...pageProps} />
