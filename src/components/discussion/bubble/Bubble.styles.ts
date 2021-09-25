@@ -3,11 +3,15 @@ import styled, { css } from "styled-components";
 import { colors } from "../../../styles/bootstrap/colors";
 import { spacing } from "../../../styles/bootstrap/spacing";
 
-export const Wrapper = styled.div<{ isLoggedUser: boolean }>`
+export const Wrapper = styled.div<{
+  isLoggedUser: boolean;
+  hasSamePreviousAuthor: boolean;
+}>`
   display: flex;
   justify-content: ${({ isLoggedUser }) =>
     isLoggedUser ? "flex-end" : "flex-start"};
-  margin-bottom: ${spacing.small};
+  margin-top: ${({ hasSamePreviousAuthor }) =>
+    hasSamePreviousAuthor ? spacing.base : spacing.small};
 `;
 
 export const Layout = styled.div`
@@ -18,7 +22,8 @@ export const Layout = styled.div`
 
 export const Author = styled.span<{ isLoggedUser: boolean }>`
   margin-bottom: ${spacing.smaller};
-  font-weight: 300;
+  padding: 0 ${spacing.big};
+  font-size: 14px;
   text-align: ${({ isLoggedUser }) => (isLoggedUser ? "right" : "left")};
 `;
 
@@ -31,6 +36,7 @@ export const MessageBubble = styled.div<{
     isLoggedUser ? colors.blue : lighten(0.15, colors.header)};
   padding: ${spacing.smaller} ${spacing.big};
   border-radius: 20px;
+  font-size: 14px;
 
   ${({ hasSamePreviousAuthor, isLoggedUser }) =>
     !hasSamePreviousAuthor &&
@@ -47,11 +53,11 @@ export const MessageBubble = styled.div<{
         ${isLoggedUser
           ? css`
               background: ${colors.blue};
-              right: ${spacing.medium};
+              right: ${spacing.bigger};
             `
           : css`
               background: ${lighten(0.15, colors.header)};
-              left: ${spacing.medium};
+              left: ${spacing.bigger};
             `}
       }
     `}

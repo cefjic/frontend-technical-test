@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import React, { FC } from "react";
 import { Conversation } from "../../types/conversation";
 import { User } from "../../types/user";
@@ -10,8 +11,11 @@ interface OwnProps {
 }
 
 const Navigation: FC<OwnProps> = ({ users, conversations }) => {
+  const router = useRouter();
+  const isVisible = !router.asPath.includes("/conversation");
+
   return (
-    <Wrapper>
+    <Wrapper isVisible={isVisible}>
       <List>
         {conversations.map((conversation) => (
           <ConversationNav

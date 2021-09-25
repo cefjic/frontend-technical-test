@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../styles/bootstrap/breakpoints";
 
 export const Main = styled.main`
   position: relative;
@@ -6,4 +7,9 @@ export const Main = styled.main`
   flex: 1;
 
   display: flex;
+  flex-direction: column;
+
+  ${media.minWidth("laptop")`
+    flex-direction: row;
+  `}
 `;
