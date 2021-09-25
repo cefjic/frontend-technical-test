@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render correctly App 1`] = `
+<div>
+  <nav
+    class="Navigationstyles__Wrapper-sc-1blsuek-0 fAnmgd"
+  >
+    <ul
+      class="Navigationstyles__List-sc-1blsuek-1 iVsdtD"
+    />
+  </nav>
+</div>
+`;

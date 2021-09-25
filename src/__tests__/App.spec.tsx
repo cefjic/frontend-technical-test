@@ -1,11 +1,17 @@
-import { render, screen } from "@testing-library/react"
-import App from "../pages"
+import { render, cleanup } from "@testing-library/react";
+import App from "../pages";
+
+const useRouter = jest.spyOn(require("next/router"), "useRouter");
+
+afterAll(cleanup);
 
 describe("App", () => {
   it("should render correctly App", () => {
-    render(<App />)
-    expect(
-      screen.getByText(/Welcome/)
-    ).toBeInTheDocument()
-  })
-})
+    useRouter.mockImplementationOnce(() => ({
+      asPath: "/",
+    }));
+
+    const { container } = render(<App users={[]} conversations={[]} />);
+    expect(container).toMatchSnapshot();
+  });
+});
