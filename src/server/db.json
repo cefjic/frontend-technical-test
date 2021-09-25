@@ -114,218 +114,29 @@
       "authorId": 1,
       "conversationId": 1,
       "body": "test",
-      "timestamp": 1632561236712,
+      "timestamp": 1632566231298,
       "id": 5
     },
     {
       "authorId": 1,
       "conversationId": 1,
-      "body": "test 2",
-      "timestamp": 1632561240309,
+      "body": "test",
+      "timestamp": 1632566231879,
       "id": 6
     },
     {
       "authorId": 1,
-      "conversationId": 3,
-      "body": "bonjour !",
-      "timestamp": 1632561273671,
+      "conversationId": 1,
+      "body": "test",
+      "timestamp": 1632566232428,
       "id": 7
     },
     {
       "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632561280102,
-      "id": 8
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632561493292,
-      "id": 9
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632561537285,
-      "id": 10
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632561599400,
-      "id": 11
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632561716730,
-      "id": 12
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632561731325,
-      "id": 13
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "tt",
-      "timestamp": 1632562314158,
-      "id": 14
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "tt",
-      "timestamp": 1632562314311,
-      "id": 15
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "tt",
-      "timestamp": 1632562314509,
-      "id": 16
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "tt",
-      "timestamp": 1632562314756,
-      "id": 17
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "tt",
-      "timestamp": 1632562314929,
-      "id": 18
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "tes",
-      "timestamp": 1632562388949,
-      "id": 19
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632562572613,
-      "id": 20
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632562573528,
-      "id": 21
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632562574150,
-      "id": 22
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test\n",
-      "timestamp": 1632564823598,
-      "id": 23
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "bonjour\n\nje m'appelle arthur\n",
-      "timestamp": 1632564831518,
-      "id": 24
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632564856671,
-      "id": 25
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632564895146,
-      "id": 26
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "bonjour",
-      "timestamp": 1632564988451,
-      "id": 27
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "why",
-      "timestamp": 1632564994189,
-      "id": 28
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632565036558,
-      "id": 29
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632565046846,
-      "id": 30
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "why",
-      "timestamp": 1632565051649,
-      "id": 31
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632565085536,
-      "id": 32
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "bonjour",
-      "timestamp": 1632565087392,
-      "id": 33
-    },
-    {
-      "authorId": 1,
-      "conversationId": 2,
-      "body": "test",
-      "timestamp": 1632565190462,
-      "id": 34
-    },
-    {
-      "authorId": 1,
       "conversationId": 1,
-      "body": "bonjour",
-      "timestamp": 1632565200041,
-      "id": 35
+      "body": "test",
+      "timestamp": 1632566232995,
+      "id": 8
     }
   ],
   "users": [
@@ -347,6 +158,11 @@
     {
       "id": 4,
       "nickname": "Elodie",
+      "token": "xxxx"
+    },
+    {
+      "id": 5,
+      "nickname": "Marc",
       "token": "xxxx"
     }
   ]

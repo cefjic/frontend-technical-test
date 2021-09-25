@@ -1,5 +1,6 @@
 import { lighten } from "polished";
 import styled, { css } from "styled-components";
+import { media } from "../../../styles/bootstrap/breakpoints";
 import { colors } from "../../../styles/bootstrap/colors";
 import { spacing } from "../../../styles/bootstrap/spacing";
 
@@ -17,7 +18,11 @@ export const Wrapper = styled.div<{
 export const Layout = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  max-width: 70%;
+
+  ${media.minWidth("laptop")`
+    max-width: 50%;
+  `}
 `;
 
 export const Author = styled.span<{ isLoggedUser: boolean }>`
