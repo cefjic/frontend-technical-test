@@ -1,10 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colors } from "../../../styles/bootstrap/colors";
 import { spacing } from "../../../styles/bootstrap/spacing";
 import { lighten, darken } from "polished";
 
-export const Layout = styled.li`
-  background: ${lighten(0.1, colors.header)};
+export const Layout = styled.li<{ isCurrent: boolean }>`
   padding: ${spacing.small};
   border-radius: 4px;
   display: flex;
@@ -13,13 +12,29 @@ export const Layout = styled.li`
   transition: background 0.2s;
 
   :hover {
-    background: ${lighten(0.15, colors.header)};
     cursor: pointer;
   }
 
   & + & {
     margin-top: ${spacing.small};
   }
+
+  ${({ isCurrent }) =>
+    isCurrent
+      ? css`
+          background: ${colors.blue};
+
+          :hover {
+            background: ${lighten(0.15, colors.blue)};
+          }
+        `
+      : css`
+          background: ${lighten(0.1, colors.header)};
+
+          :hover {
+            background: ${lighten(0.15, colors.header)};
+          }
+        `}
 `;
 
 export const Icon = styled.div`

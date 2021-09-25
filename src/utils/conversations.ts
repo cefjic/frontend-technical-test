@@ -10,3 +10,8 @@ export const getUserConversations = async (
   userId: User["id"]
 ): Promise<AxiosResponse<Conversation[]>> =>
   axios.get<Conversation[]>(`${process.env.API_URL}/conversations/${userId}`);
+
+export const getConversationFromList = (
+  conversations: Conversation[],
+  conversationId: Conversation["id"]
+) => conversations.find(({ id }) => id === conversationId);

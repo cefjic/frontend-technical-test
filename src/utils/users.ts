@@ -20,3 +20,6 @@ export const getOtherUserFromConversation = (
   }
   return getUserFromList(users, recipientId);
 };
+
+export const isLoggedUser = (userId: User["id"]): boolean =>
+  userId === getLoggedUserId();

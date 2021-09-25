@@ -1,4 +1,5 @@
 {
+  "loading": "Loading...",
   "errors": {
     "500": {
       "title": ":(",

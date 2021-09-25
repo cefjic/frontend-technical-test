@@ -5,6 +5,8 @@ import { User } from "../../../types/user";
 import { getOtherUserFromConversation } from "../../../utils/users";
 import { Name, Layout, Icon } from "./ConversationNav.styles";
 import { getFirstCharacter } from "./ConversationNav.utils";
+import { useRouter } from "next/dist/client/router";
+import { DateTime } from "luxon";
 
 interface OwnProps {
   users: User[];
@@ -12,19 +14,23 @@ interface OwnProps {
 }
 
 const ConversationNav: FC<OwnProps> = ({ users, conversation }) => {
+  const { query } = useRouter();
   const user = getOtherUserFromConversation(conversation, users);
 
   if (!user) {
     return <Fragment />;
   }
 
-  const { nickname, id } = user;
-  const firstChar = getFirstCharacter(nickname);
+  const { id: routerId } = query;
+  const { id } = conversation;
+  const { nickname } = user;
+  const firstNicknameChar = getFirstCharacter(nickname);
+  const isCurrentConversation = id === parseInt(`${routerId}`);
 
   return (
     <Link href={`/conversation/${id}`} passHref>
-      <Layout>
-        <Icon>{firstChar}</Icon>
+      <Layout isCurrent={isCurrentConversation}>
+        <Icon>{firstNicknameChar}</Icon>
         <Name>{nickname}</Name>
       </Layout>
     </Link>
