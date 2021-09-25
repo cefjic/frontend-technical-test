@@ -13,8 +13,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   #__next {
+
     display: flex;
     min-height: 100vh;
+    max-height: 100vh;
     flex-direction: column
   }
 `;

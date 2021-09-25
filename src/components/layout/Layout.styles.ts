@@ -8,6 +8,7 @@ export const Main = styled.main`
 
   display: flex;
   flex-direction: column;
+  max-height: calc(100vh - 64px);
 
   ${media.minWidth("laptop")`
     flex-direction: row;

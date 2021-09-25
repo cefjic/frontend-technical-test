@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useSWR from "swr";
 import { Conversation } from "../../types/conversation";
@@ -7,7 +7,7 @@ import { User } from "../../types/user";
 import { fetcher } from "../../utils/http";
 import { getPreviousMessage } from "../../utils/messages";
 import Bubble from "./bubble/Bubble";
-import { Wrapper } from "./Discussion.styles";
+import { BubbleWrapper, Wrapper } from "./Discussion.styles";
 import Form from "./form/Form";
 import { toast } from "react-toastify";
 
@@ -23,6 +23,7 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
   const { id } = conversation;
 
   const { t } = useTranslation();
+  const bubbleWrapperRef = useRef<HTMLDivElement>(null);
 
   const {
     data: messages,
@@ -30,13 +31,42 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
     mutate,
   } = useSWR<Message[]>(`${process.env.API_URL}/messages/${id}`, fetcher);
 
-  const updateMessages = useCallback(() => {
-    mutate().catch(() => toast.error(t("errors.messages.update")));
-  }, [mutate, t]);
+  const scrollToDown = () => {
+    console.log("test", bubbleWrapperRef.current);
+    if (bubbleWrapperRef.current) {
+      console.log(bubbleWrapperRef.current);
+      bubbleWrapperRef.current.scrollTop =
+        bubbleWrapperRef.current.scrollHeight;
+    }
+  };
+
+  const updateMessages = useCallback(
+    (withScroll = true) => {
+      mutate()
+        .then(() => {
+          if (withScroll) {
+            scrollToDown();
+          }
+        })
+        .catch(() => toast.error(t("errors.messages.update")));
+    },
+    [mutate, t]
+  );
+
+  // Scroll to end of BubbleWrapper to show last messages first
+  useEffect(() => {
+    /**
+     * I need to set the scroll on timeout to prevent no bubbleWrapperRef.
+     * In effect, bubbleWrapperRef.current change will no trigger this useEffect.
+     */
+    const timeout = window.setTimeout(scrollToDown, 50);
+
+    return () => window.clearTimeout(timeout);
+  }, [bubbleWrapperRef]);
 
   useEffect(() => {
     const interval = window.setInterval(
-      () => updateMessages(),
+      () => updateMessages(false),
       REFRESH_INTERVAL
     );
     return window.clearInterval(interval);
@@ -54,17 +84,19 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
 
   return (
     <Wrapper>
-      {messages.map((message) => {
-        const { id } = message;
-        return (
-          <Bubble
-            users={users}
-            message={message}
-            previousMessage={getPreviousMessage(id, messages)}
-            key={id}
-          />
-        );
-      })}
+      <BubbleWrapper ref={bubbleWrapperRef}>
+        {messages.map((message) => {
+          const { id } = message;
+          return (
+            <Bubble
+              users={users}
+              message={message}
+              previousMessage={getPreviousMessage(id, messages)}
+              key={id}
+            />
+          );
+        })}
+      </BubbleWrapper>
       <Form conversation={conversation} onSubmit={updateMessages} />
     </Wrapper>
   );
