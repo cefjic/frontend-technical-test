@@ -76,7 +76,7 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
             <Bubble
               users={users}
               message={message}
-              previousMessage={getPreviousMessage(id, messages)}
+              previousMessage={getPreviousMessage(messages, id)}
               key={id}
             />
           );

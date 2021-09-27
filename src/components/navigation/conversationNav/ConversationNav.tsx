@@ -15,7 +15,7 @@ interface OwnProps {
 
 const ConversationNav: FC<OwnProps> = ({ users, conversation }) => {
   const { query } = useRouter();
-  const user = getOtherUserFromConversation(conversation, users);
+  const user = getOtherUserFromConversation(users, conversation);
 
   if (!user) {
     return <Fragment />;

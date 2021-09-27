@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "start-server": "json-server --watch src/server/db.json --routes src/server/routes.json --middlewares src/server/middleware/conversations.js --port 3005",
-    "test": "jest",
+    "test": "jest --watchAll",
+    "test:watch": "jest --watch",
+    "test:coverage": "yarn test --coverage",
     "lint": "next lint --no-error-on-unmatched-pattern"
   },
   "engines": {

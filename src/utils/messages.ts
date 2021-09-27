@@ -2,8 +2,8 @@ import axios, { AxiosResponse } from "axios";
 import { Message, MessageWithoutId } from "../types/message";
 
 export const getPreviousMessage = (
-  messageId: Message["id"],
-  messages: Message[]
+  messages: Message[],
+  messageId: Message["id"]
 ): Message | undefined =>
   messages.find((_, index) => messages[index + 1]?.id === messageId);
 
