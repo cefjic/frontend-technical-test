@@ -1,3 +1,33 @@
+# About my app
+
+I took ~10 hours to make this app, including 3 hours to write unit tests (separated on some days).
+
+# Process
+
+I have started by create navigation page with conversation with error 500 and 404. After that I added messaging. I have based my design on desktop Messages app from Apple.
+
+To get messages from other users, I have used SWR. It allows to auto refresh datas simply.
+
+# Unit Tests
+
+When my app was good for me, I have added some tests.
+
+I Dont want to have a 100% coverage. You can show coverage by running `yarn test:coverage` to see coverage. Apart from the Form component every components are globally tested, utils are globally tested, and App page is tested (but not index).
+
+I searched to make differents tests likes component with mock or function tests.
+
+I have never used testing-library but Enzyme to write my unit tests, so it was more long to write them.
+
+# Features
+
+I have make basic features.
+
+I have not added bonus 1.
+
+Bonus 2 is added, by differents ways. For SSR 500 returns, 500 page exists. For messages updates, I have added toasts when errors are catched.
+
+---
+
 # Context :
 
 At leboncoin, our users can share messages about a transaction, or ask for informations about any products.
