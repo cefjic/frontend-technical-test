@@ -24,7 +24,7 @@ I have make basic features.
 
 I have not added bonus 1.
 
-Bonus 2 is added, by differents ways. For SSR 500 returns, 500 page exists. For messages updates, I have added toasts when errors are catched.
+Bonus 2 is added, by differents ways. For SSR 500 returns, 500 and 404 pages exists. For messages updates, I have added toasts when errors are catched.
 
 ---
 
