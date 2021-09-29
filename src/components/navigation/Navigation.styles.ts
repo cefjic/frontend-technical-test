@@ -4,7 +4,8 @@ import { darken } from "polished";
 import { spacing } from "../../styles/bootstrap/spacing";
 import { media } from "../../styles/bootstrap/breakpoints";
 
-export const Wrapper = styled.nav`
+export const Wrapper = styled.nav<{ isVisible: boolean }>`
+  display: ${({ isVisible }) => (isVisible ? "block" : "none")};
   background: ${darken(0.05, colors.header)};
   border-right: 1px solid ${darken(0.2, colors.header)};
   flex: 1;

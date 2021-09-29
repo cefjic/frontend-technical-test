@@ -15,21 +15,17 @@ const Navigation: FC<OwnProps> = ({ users, conversations }) => {
   const isVisible = !router.asPath.includes("/conversation");
 
   return (
-    <Fragment>
-      {isVisible && (
-        <Wrapper data-testid={`nav-${conversations.length}`}>
-          <List>
-            {conversations.map((conversation) => (
-              <ConversationNav
-                users={users}
-                conversation={conversation}
-                key={conversation.id}
-              />
-            ))}
-          </List>
-        </Wrapper>
-      )}
-    </Fragment>
+    <Wrapper isVisible={isVisible} data-testid={`nav-${conversations.length}`}>
+      <List>
+        {conversations.map((conversation) => (
+          <ConversationNav
+            users={users}
+            conversation={conversation}
+            key={conversation.id}
+          />
+        ))}
+      </List>
+    </Wrapper>
   );
 };
 
