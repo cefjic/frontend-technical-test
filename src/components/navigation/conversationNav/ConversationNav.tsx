@@ -14,14 +14,14 @@ interface OwnProps {
 }
 
 const ConversationNav: FC<OwnProps> = ({ users, conversation }) => {
-  const { query } = useRouter();
+  const router = useRouter();
   const user = getOtherUserFromConversation(users, conversation);
 
   if (!user) {
     return <Fragment />;
   }
 
-  const { id: routerId } = query;
+  const routerId = router?.query.id;
   const { id } = conversation;
   const { nickname } = user;
   const firstNicknameChar = getFirstCharacter(nickname);

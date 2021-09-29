@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout component should render a component 1`] = `
+<div>
+  <header
+    class="Navbarstyles__Wrapper-sc-vhmymz-0 cGHFyD"
+  >
+    <h1
+      class="Navbarstyles__Title-sc-vhmymz-1 fUIVQd"
+      href="/"
+    >
+      Messenger
+    </h1>
+  </header>
+</div>
+`;

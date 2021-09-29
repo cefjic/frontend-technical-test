@@ -11,8 +11,10 @@ const Error: FC<OwnProps> = ({ status }) => {
 
   return (
     <ErrorWrapper>
-      <Title>{t(`errors.${status}.title`)}</Title>
-      <Subtitle>{t(`errors.${status}.subtitle`)}</Subtitle>
+      <Title data-testid="error-title">{t(`errors.${status}.title`)}</Title>
+      <Subtitle data-testid="error-subtitle">
+        {t(`errors.${status}.subtitle`)}
+      </Subtitle>
     </ErrorWrapper>
   );
 };

@@ -21,10 +21,11 @@ const Bubble: FC<OwnProps> = ({ users, message, previousMessage }) => {
 
   return (
     <Wrapper
+      data-testid={`logged-${isCurrentUser}--same-${hasSamePreviousAuthor}`}
       hasSamePreviousAuthor={hasSamePreviousAuthor}
       isLoggedUser={isCurrentUser}
     >
-      <Layout>
+      <Layout data-testid="bubble-layout">
         {!hasSamePreviousAuthor && user && (
           <Author isLoggedUser={isCurrentUser}>
             {isCurrentUser ? t("you") : user.nickname}
@@ -33,6 +34,7 @@ const Bubble: FC<OwnProps> = ({ users, message, previousMessage }) => {
         <MessageBubble
           isLoggedUser={isCurrentUser}
           hasSamePreviousAuthor={hasSamePreviousAuthor}
+          data-testid="bubble-body"
         >
           {body}
         </MessageBubble>

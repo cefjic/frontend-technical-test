@@ -1,13 +1,11 @@
 import { getFirstCharacter } from "../components/navigation/conversationNav/ConversationNav.utils";
-import { render, cleanup } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import ConversationNav from "../components/navigation/conversationNav/ConversationNav";
 import { User } from "../types/user";
 import { DEFAULT_CONVERSATION } from "../utils/__tests__/conversations.spec";
 import { DEFAULT_USER } from "../utils/__tests__/users.spec";
 
 const useRouter = jest.spyOn(require("next/router"), "useRouter");
-
-afterAll(cleanup);
 
 describe("getFirstCharacter", () => {
   it("should return first character from string", () => {
