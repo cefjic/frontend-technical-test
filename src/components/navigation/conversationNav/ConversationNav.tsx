@@ -29,9 +29,14 @@ const ConversationNav: FC<OwnProps> = ({ users, conversation }) => {
 
   return (
     <Link href={`/conversation/${id}`} passHref>
-      <Layout isCurrent={isCurrentConversation}>
-        <Icon>{firstNicknameChar}</Icon>
-        <Name>{nickname}</Name>
+      <Layout
+        isCurrent={isCurrentConversation}
+        data-testid={
+          isCurrentConversation ? "current-conversation" : "conversation"
+        }
+      >
+        <Icon data-testid="conv-icon">{firstNicknameChar}</Icon>
+        <Name data-testid="conv-nickname">{nickname}</Name>
       </Layout>
     </Link>
   );

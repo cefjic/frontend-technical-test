@@ -58,7 +58,7 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
   }, [bubbleWrapperRef]);
 
   if (!messages && !error) {
-    // TODO : improve loading UI with loader
+    // TODO : improve loading UI with loader or skeleton
     return <Wrapper>{t("loading")}</Wrapper>;
   }
 

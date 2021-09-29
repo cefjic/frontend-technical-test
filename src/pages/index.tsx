@@ -1,8 +1,6 @@
-import { FC, Fragment } from "react";
-import Head from "next/head";
+import { FC } from "react";
 import { getUsers } from "../utils/users";
 import { User } from "../types/user";
-import axios from "axios";
 import { Conversation } from "../types/conversation";
 import { getLoggedUserConversations } from "../utils/conversations";
 import Navigation from "../components/navigation/Navigation";
@@ -12,13 +10,9 @@ interface OwnProps {
   conversations: Conversation[];
 }
 
-const Home: FC<OwnProps> = ({ users, conversations }) => {
-  return (
-    <Fragment>
-      <Navigation users={users} conversations={conversations} />
-    </Fragment>
-  );
-};
+const Home: FC<OwnProps> = ({ users, conversations }) => (
+  <Navigation users={users} conversations={conversations} />
+);
 
 export async function getServerSideProps() {
   try {

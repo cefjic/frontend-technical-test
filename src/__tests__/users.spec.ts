@@ -7,7 +7,7 @@ import {
 } from "../utils/users";
 import { DEFAULT_CONVERSATION } from "./conversations.spec";
 
-const DEFAULT_USER: User = {
+export const DEFAULT_USER: User = {
   id: 0,
   nickname: "test",
   token: "xxxx",
