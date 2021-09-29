@@ -1,5 +1,5 @@
-import { Conversation } from "../types/conversation";
-import { getConversationFromList } from "../utils/conversations";
+import { Conversation } from "../../types/conversation";
+import { getConversationFromList } from "../conversations";
 
 export const DEFAULT_CONVERSATION: Conversation = {
   id: 0,

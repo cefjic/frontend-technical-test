@@ -10,6 +10,7 @@ import Bubble from "./bubble/Bubble";
 import { BubbleWrapper, Wrapper } from "./Discussion.styles";
 import Form from "./form/Form";
 import { toast } from "react-toastify";
+import { scrollToDown } from "./Discussion.utils";
 
 interface OwnProps {
   users: User[];
@@ -33,16 +34,9 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
     refreshInterval: REFRESH_INTERVAL,
   });
 
-  const scrollToDown = () => {
-    if (bubbleWrapperRef.current) {
-      bubbleWrapperRef.current.scrollTop =
-        bubbleWrapperRef.current.scrollHeight;
-    }
-  };
-
   const updateMessages = useCallback(() => {
     mutate()
-      .then(scrollToDown)
+      .then(() => scrollToDown(bubbleWrapperRef))
       .catch(() => toast.error(t("errors.messages.update")));
   }, [mutate, t]);
 
@@ -52,28 +46,32 @@ const Discussion: FC<OwnProps> = ({ users, conversation }) => {
      * I need to set the scroll on timeout to prevent no bubbleWrapperRef.
      * In effect, bubbleWrapperRef.current change will no trigger this useEffect.
      */
-    const timeout = window.setTimeout(scrollToDown, 50);
-
+    const timeout = window.setTimeout(() => scrollToDown(bubbleWrapperRef), 50);
     return () => window.clearTimeout(timeout);
   }, [bubbleWrapperRef]);
 
   if (!messages && !error) {
     // TODO : improve loading UI with loader or skeleton
-    return <Wrapper>{t("loading")}</Wrapper>;
+    return <Wrapper data-testid="discussion-loader">{t("loading")}</Wrapper>;
   }
 
   if (!messages || error) {
     // TODO : improve error UI with beautiful card
-    return <Wrapper>{t("errors.message.loading")}</Wrapper>;
+    return (
+      <Wrapper data-testid="discussion-error">
+        {t("errors.message.loading")}
+      </Wrapper>
+    );
   }
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="discussion-content">
       <BubbleWrapper ref={bubbleWrapperRef}>
         {messages.map((message) => {
           const { id } = message;
           return (
             <Bubble
+              data-testid="bubble"
               users={users}
               message={message}
               previousMessage={getPreviousMessage(messages, id)}

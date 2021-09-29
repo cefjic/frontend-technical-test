@@ -1,7 +1,7 @@
-import { Message } from "../types/message";
-import { getPreviousMessage } from "../utils/messages";
+import { Message } from "../../types/message";
+import { getPreviousMessage } from "../messages";
 
-const DEFAULT_MESSAGE: Message = {
+export const DEFAULT_MESSAGE: Message = {
   id: 0,
   conversationId: 0,
   authorId: 0,

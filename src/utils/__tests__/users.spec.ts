@@ -1,10 +1,10 @@
-import { Conversation } from "../types/conversation";
-import { User } from "../types/user";
+import { Conversation } from "../../types/conversation";
+import { User } from "../../types/user";
 import {
   getOtherUserFromConversation,
   getUserFromList,
   isLoggedUser,
-} from "../utils/users";
+} from "../users";
 import { DEFAULT_CONVERSATION } from "./conversations.spec";
 
 export const DEFAULT_USER: User = {
