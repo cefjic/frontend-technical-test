@@ -3,7 +3,7 @@
 exports[`App should render correctly App 1`] = `
 <div>
   <nav
-    class="Navigationstyles__Wrapper-sc-1blsuek-0 djXMGO"
+    class="Navigationstyles__Wrapper-sc-1blsuek-0 fAnmgd"
     data-testid="nav-0"
   >
     <ul
